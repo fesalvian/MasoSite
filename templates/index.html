@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Cores</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Catálogo de Cores</h1>
+
+        <!-- Filtros -->
+        <div class="filtros">
+            <input type="text" id="filtro-nome" placeholder="Pesquisar por nome...">
+            <select id="filtro-colecao">
+                <option value="">Todas as Coleções</option>
+                <!-- As opções de coleção serão preenchidas via JavaScript -->
+            </select>
+            <button onclick="filtrarCores()">Filtrar</button>
+        </div>
+
+        <!-- Lista de Cores -->
+        <div id="lista-cores" class="lista-cores">
+            <!-- As cores serão carregadas aqui via JavaScript -->
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
