@@ -117,6 +117,10 @@ def catalogo():
 def login():
     return render_template('pages/login.html')
 
+@app.route('/cadastro')
+def cadastro():
+    return render_template('pages/cadastro.html')
+
 # Iniciar o servidor
 if __name__ == '__main__':
     app.run(debug=True)

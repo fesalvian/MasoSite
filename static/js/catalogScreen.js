@@ -1,134 +1,111 @@
-document.addEventListener ('DOMContentLoaded', carregarCores, async () => {
-    const { default: filterAndSearch } = await import('./modulo.js');
-    const filterSelect = document.getElementById('filterSelect');
-    const searchInput = document.getElementById('searchInput');
-    const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+document.addEventListener('DOMContentLoaded', async () => {
+    const API_URL = 'http://127.0.0.1:5000/cores'; // URL da sua API
+    const filtroNome = document.getElementById('searchInput'); // Campo de pesquisa
+    const filtroColecao = document.getElementById('filterSelect'); // Select de coleção
+    const catalog = document.getElementById('catalog'); // Contêiner das cores
 
+    let cores = []; // Variável para armazenar todas as cores carregadas
+    let favorites = JSON.parse(localStorage.getItem('favorites')) || []; // Carrega os favoritos do localStorage
 
-// Função de filtragem
-filterSelect.addEventListener('change', () => {
-    const collection = filterSelect.value;
-    filterAndSearch(collection, searchInput.value.toLowerCase());
-    console.log("filtragem efetuada atraves do filtro de seleção");
-    
-});
-
-// Função de busca
-searchInput.addEventListener('input', () => {
-    const searchTerm = searchInput.value.toLowerCase();
-    filterAndSearch(filterSelect.value, searchTerm);
-});
-
-// Seta o valor inicial da checkbox baseado no localstorage
-const checkboxes = document.querySelectorAll('.favorite-checkbox');
-checkboxes.forEach(checkbox => {
-    const catalogItem = checkbox.closest('.catalog-item');
-    const itemId = catalogItem.getAttribute('data-id');
-    if (favorites.includes(itemId)) {
-        checkbox.checked = true;
+    // Função para remover acentos
+    function removerAcentos(str) {
+        return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 
-    checkbox.addEventListener('change', function() {
-        if (this.checked) {
-            addToFavorites(itemId);
-        } else {
-            removeFromFavorites(itemId);
+    // Função para carregar as cores da API
+    async function carregarCores() {
+        try {
+            const response = await fetch(API_URL);
+            cores = await response.json(); // Armazena todas as cores
+            exibirCores(cores); // Exibe todas as cores inicialmente
+        } catch (error) {
+            console.error('Erro ao carregar cores:', error);
         }
-    });
-});
-
-
-        //adiciona aos favoritos
-
-        function addToFavorites(itemId) {
-            if (!favorites.includes(itemId)) {
-                favorites.push(itemId);
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-                console.log(`Item ${itemId} adicionado aos favoritos`);
-                console.log(`item clicado ${item.checkboxInput}`);
-                
-            }
-        }
-    
-            //remove dos favoritos
-    
-        function removeFromFavorites(itemId) {
-            const index = favorites.indexOf(itemId);
-            if (index !== -1) {
-                favorites.splice(index, 1);
-                localStorage.setItem('favorites', JSON.stringify(favorites));
-                console.log(`Item ${itemId} removido dos favoritos`);
-            }
-        }
-    });
-
-    //imprime catalogo do db na tela
-    const API_URL = 'http://127.0.0.1:5000/cores';
-
-    // Função para carregar as cores
-async function carregarCores() {
-    try {
-        const response = await fetch(API_URL);
-        const cores = await response.json();
-        exibirCores(cores);
-        preencherFiltroColecao(cores);
-    } catch (error) {
-        console.error('Erro ao carregar cores:', error);
     }
-}
-
-
-    const catalog = document.getElementById('catalog');
 
     // Função para exibir as cores na tela
-function exibirCores(cores) {
-    catalog.innerHTML = '';
-    cores.forEach(cor => {
-        const card = `
-            <div class="cor-card">
-                <img src="${cor.imagem}" alt="${cor.nome}">
-                <h3>${cor.nome}</h3>
-                <p><strong>Coleção:</strong> ${cor.colecao}</p>
-                <p><strong>Linha:</strong> ${cor.linha}</p>
-                <p>${cor.descricao}</p>
-            </div>
-        `;
-        catalog.insertAdjacentHTML('beforeend', card);
-    });
-}
+    function exibirCores(cores) {
+        catalog.innerHTML = ''; // Limpa o catálogo antes de exibir as cores filtradas
+        cores.forEach(cor => {
+            const isFavorito = favorites.includes(cor.id.toString()); // Verifica se a cor já está favoritada
 
-    fetch('../mocks/catalog.json')
-    .then(response => response.json())    
-    .then(data =>{
-
-        console.log("fetch carregado com sucesso");
-
-        const catalog = document.getElementById('catalog');
-
-        data.forEach(item =>{
-
-            const itemDiv = document.createElement('div');
-            itemDiv.className = 'item';
-
-            itemDiv.innerHTML = 
-            `<div class="catalog-item" data-collection="colecao1" data-id="1" data-name="${item.name}">
-        <img src="${item.image}" alt="${item.name}">
-        <h3 class="nomeCores">${item.name}</h3><h4 class="nomeColec">${item.colection}</h4>
-        <input type="checkbox" id="checkboxInput-${item.checkboxInput}" class="favorite-checkbox"> 
-        <!-- Ao adicionar item, se atente ao checkboxInput, pois para o JS ler tem que haver o valor correto do item -->
-        <label for="checkboxInput-${item.checkboxInput}" class="bookmark">
-            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" class="svgIcon">
-                <path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path>
-            </svg>
-        </label>
-    </div>`;
-
-    catalog.appendChild(itemDiv);
+            const card = `
+                <div class="cor-card">
+                    <img src="${cor.imagem}" alt="${cor.nome}">
+                    <h3>${cor.nome}</h3>
+                    <p><strong>Coleção:</strong> ${cor.colecao}</p>
+                    <p><strong>Linha:</strong> ${cor.linha}</p>
+                    <p>${cor.descricao}</p>
+                    <button class="favorite-btn ${isFavorito ? 'favoritado' : ''}" data-id="${cor.id}">
+                        ${isFavorito ? '★' : '☆'}
+                    </button>
+                </div>
+            `;
+            catalog.insertAdjacentHTML('beforeend', card); // Adiciona o card ao catálogo
         });
-    })
 
-    .catch(error => console.error('Erro ao carregar o fetch', error));
+        // Adiciona event listeners aos botões de favoritos
+        document.querySelectorAll('.favorite-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const corId = button.getAttribute('data-id');
+                toggleFavorito(corId, button); // Alterna o estado de favorito
+            });
+        });
+    }
 
+    // Função para alternar o estado de favorito
+    function toggleFavorito(corId, button) {
+        if (favorites.includes(corId)) {
+            // Remove dos favoritos
+            favorites = favorites.filter(id => id !== corId);
+            button.classList.remove('favoritado');
+            button.innerHTML = '☆';
+        } else {
+            // Adiciona aos favoritos
+            favorites.push(corId);
+            button.classList.add('favoritado');
+            button.innerHTML = '★';
+        }
 
+        // Atualiza o localStorage
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
 
-    
+    // Função para filtrar as cores com base no nome e na coleção
+    function filtrarCores() {
+        const nome = filtroNome.value.toLowerCase(); // Valor do campo de pesquisa (em minúsculas)
+        const colecao = filtroColecao.value; // Valor selecionado no select
+
+        const coresFiltradas = cores.filter(cor => {
+            // Normaliza o nome da cor e o valor da pesquisa (remove acentos e converte para minúsculas)
+            const nomeCorNormalizado = removerAcentos(cor.nome.toLowerCase());
+            const nomePesquisaNormalizado = removerAcentos(nome);
+
+            // Filtra por nome (insensível a acentos e maiúsculas/minúsculas)
+            const matchNome = nomeCorNormalizado.includes(nomePesquisaNormalizado);
+
+            // Filtra por coleção
+            const matchColecao = colecao === 'all' || cor.colecao === colecao;
+
+            // Retorna true se ambos os filtros forem atendidos
+            return matchNome && matchColecao;
+        });
+
+        exibirCores(coresFiltradas); // Exibe as cores filtradas
+    }
+
+    // Adiciona event listeners para filtrar as cores automaticamente
+    filtroNome.addEventListener('input', filtrarCores); // Filtra ao digitar no campo de pesquisa
+    filtroColecao.addEventListener('change', filtrarCores); // Filtra ao mudar o select
+
+    // Verifica se há um parâmetro de filtro na URL e aplica o filtro correspondente
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+    if (filter) {
+        filtroColecao.value = filter; // Define o valor do select com o filtro da URL
+        filtrarCores(); // Aplica o filtro
+    }
+
+    // Carrega as cores quando a página é carregada
+    await carregarCores();
+});

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maso Web Page</title>
+    <title>Catalogo de cores</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/itens.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
@@ -11,12 +11,12 @@
 </head>
 <body>
 <header>
-    <img class="logoMaso" src="../img/2.png" alt="logoMaso">
+    <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
     <nav class="navButtons">
       <a href="{{ url_for('index') }}"><button class="btn" >Pagina incial</button></a>
       <a href="{{ url_for('catalogo') }}"><button class="btn" >Catalogos</button></a>
       <a href="{{ url_for('favoritos') }}"><button class="btn">Favoritos</button></a></nav>
-      <a href="{{ url_for('login') }}" ><img src="./img/perfil-icone.png" class="perfil-icone" alt="icone do perfil"></a>
+      <a href="{{ url_for('login') }}" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
 
         <input class="label-check" id="label-check" type="checkbox">
     <label for="label-check" class="hamburger-label">
@@ -29,10 +29,10 @@
   <div class="filters">
     <select id="filterSelect">
         <option value="all">Todos</option>
-        <option value="colecao1">Duratex</option>
-        <option value="colecao2">Arauco</option>
-        <option value="colecao3">Guararapes</option>
-        <option value="colecao4">Berneck</option>
+        <option value="Duratex">Duratex</option>
+        <option value="Arauco">Arauco</option>
+        <option value="Guararapes">Guararapes</option>
+        <option value="Berneck">Berneck</option>
     </select>
     <input type="text" id="searchInput" placeholder="Buscar por nome...">
 </div>
@@ -150,8 +150,7 @@
             <a href="sobre-nos.html">Sobre nós</a>
           </p>
 </footer>
-<script src="../js/main.js" ></script>
-<script src="../js/homeScreen.js" type="module"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/homeScreen.js') }}" type="module"></script>
 <script src="{{ url_for('static', filename='js/catalogScreen.js') }}" type="module"></script>
-<script src="../js/modulo.js" type="module"></script>
 </html>

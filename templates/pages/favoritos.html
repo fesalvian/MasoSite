@@ -15,12 +15,12 @@
 </head>
 <body>
 <header>
-  <img class="logoMaso" src="../img/2.png" alt="logoMaso">
+  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
         <nav class="navButtons">
           <a href="{{ url_for('index') }}"><button class="btn" >Pagina incial</button></a>
           <a href="{{ url_for('catalogo') }}"><button class="btn" >Catalogos</button></a>
           <a href="{{ url_for('favoritos') }}"><button class="btn">Favoritos</button></a></nav>
-          <a href="{{ url_for('login') }}" ><img src="./img/perfil-icone.png" class="perfil-icone" alt="icone do perfil"></a>
+          <a href="{{ url_for('login') }}" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
         
           <input class="label-check" id="label-check" type="checkbox">
           <label for="label-check" class="hamburger-label">
@@ -157,7 +157,6 @@
             <a href="sobre-nos.html">Sobre nós</a>
           </p>
 </footer>
-<script src="../js/main.js" ></script>
-<script src="../js/favorites.js"></script>
-<script src="./js/modulo.js" type="modulo"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/favorites.js') }}" type="module"></script>
 </html>

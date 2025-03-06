@@ -33,26 +33,26 @@
   }
 
   #Arauco{
-    background-image: url('../img/arauco.png');
+    background-image: url('https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/arauco.png?raw=true');
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.1);
   }
 
   #Guararapes{
-    background-image: url(../img/guararapes.png);
+    background-image: url('https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/guararapes.png?raw=true');
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.1);
   }
 
   #Duratex{
-    background-image: url(../img/duratex.png);
+    background-image: url('https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/duratex.png?raw=true');
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.1);
 
   }
 
   #Berneck{
-    background-image: url(../img/berneck.png);
+    background-image: url('https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/berneck.png?raw=true');
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 6px 8px rgba(0, 0, 0, 0.1);
 

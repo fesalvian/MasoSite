@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maso Web Page</title>
-    <link rel="stylesheet" href="../styles/styles.css" >
-    <link rel="stylesheet" href="../styles/itens.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/itens.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/cadastro.css') }}">
     <div> 
         
       </nav>
@@ -15,12 +16,12 @@
 </head>
 <body>
 <header>
-  <img class="logoMaso" src="../img/2.png" alt="logoMaso">
+  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
         <nav class="navButtons">
           <a href="../home.html"><button class="btn" >Pagina incial</button></a>
           <a href="catalogo.html"><button class="btn" >Catalogos</button></a>
           <a href="favoritos.html"><button class="btn">Favoritos</button></a></nav>
-          <a href="./login.html" ><img src="../img/perfil-icone.png" class="perfil-icone" alt="icone do perfil"></a>
+          <a href="./login.html" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
         
           <input class="label-check" id="label-check" type="checkbox">
     <label for="label-check" class="hamburger-label">
