@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     // Função para exibir as cores na tela
-    function exibirCores(cores) {
+     function exibirCores(cores) {
         catalog.innerHTML = ''; // Limpa o catálogo antes de exibir as cores filtradas
         cores.forEach(cor => {
             const isFavorito = favorites.includes(cor.id.toString()); // Verifica se a cor já está favoritada
@@ -94,17 +94,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         exibirCores(coresFiltradas); // Exibe as cores filtradas
     }
 
+    
+    // Verifica se há um parâmetro de filtro na URL e aplica o filtro correspondente
+    const urlParams = new URLSearchParams(window.location.search);
+    const filter = urlParams.get('filter');
+   
+    if (filtroColecao && filter) {
+        console.log("Filtro encontrado na URL:", filter); // Depuração
+        filtroColecao.value = filter;
+        filtroColecao.dispatchEvent(new Event("change")); // Dispara o evento
+        setTimeout(() => filtrarCores(), 100); // Aguarda um pequeno tempo antes de filtrar
+    }
+
     // Adiciona event listeners para filtrar as cores automaticamente
     filtroNome.addEventListener('input', filtrarCores); // Filtra ao digitar no campo de pesquisa
     filtroColecao.addEventListener('change', filtrarCores); // Filtra ao mudar o select
 
-    // Verifica se há um parâmetro de filtro na URL e aplica o filtro correspondente
-    const urlParams = new URLSearchParams(window.location.search);
-    const filter = urlParams.get('filter');
-    if (filter) {
-        filtroColecao.value = filter; // Define o valor do select com o filtro da URL
-        filtrarCores(); // Aplica o filtro
-    }
 
     // Carrega as cores quando a página é carregada
     await carregarCores();

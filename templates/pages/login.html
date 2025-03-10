@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maso Web Page</title>
+
+    <style>
+      .message {
+          text-align: center;
+          font-size: 24px;
+          font-weight: bold;
+          color: white;
+      }
+  </style>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/itens.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
@@ -33,7 +43,7 @@
         </header>
 
         <main class="main-login">
-            <form id = "loginForm">
+            <!-- <form id = "loginForm">
                 <label for="login">E-mail</label>
                 <input type="login" id="login" name="login" required>
         
@@ -45,7 +55,12 @@
                 <a class="butCadastrar" href = "{{ url_for('cadastro') }}">
                 Cadastrar
                 </a>
-            </form>
+            </form> -->
+
+            <div class="message">
+              Funcionalidade em desenvolvimento, em breve...
+          </div>
+
         </main>
         
 </body>

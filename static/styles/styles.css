@@ -248,6 +248,7 @@ h4{
   color: #ffcc00; /* Cor da estrela favoritada */
 }
 
+
 @keyframes puff-out-center {
   0% {
     transform: scale(1);
