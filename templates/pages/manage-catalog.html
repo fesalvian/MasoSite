@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maso Web Page</title>
-    <link rel="stylesheet" href="../styles/styles.css" >
-    <link rel="stylesheet" href="../styles/itens.css">
-    <link rel="stylesheet" href="../styles/footer.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    <div> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/itens.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/manageCores.css') }}">
         
       </nav>
     </div>
@@ -17,11 +17,11 @@
 <header>
   <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
         <nav class="navButtons">
-          <a href="../home.html"><button class="btn" >Pagina incial</button></a>
-          <a href="catalogo.html"><button class="btn" >Catalogos</button></a>
-          <a href="favoritos.html"><button class="btn">Favoritos</button></a></nav>
-          <a href="./login.html" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
-        
+          <a href="{{ url_for('index') }}"><button class="btn" >Pagina incial</button></a>
+      <a href="{{ url_for('catalogo') }}"><button class="btn" >Catalogos</button></a>
+      <a href="{{ url_for('favoritos') }}"><button class="btn">Favoritos</button></a></nav>
+      <a href="{{ url_for('login') }}" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
+
           <input class="label-check" id="label-check" type="checkbox">
     <label for="label-check" class="hamburger-label">
       <div class="line1"></div>
@@ -31,10 +31,53 @@
         </header>
 <main>
   <div class="content">
-    <h1>ITENS DO CATALOGO AQUI EM LISTA</h1>
+    <h1>Gerenciamento de Cores</h1>
+
+    <!-- Formulário para adicionar/editar cores -->
+    <div class="form-container">
+        <h2 id="formTitle">Adicionar Nova Cor</h2>
+        <form id="formCor">
+            <input type="hidden" id="corId" name="corId">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="colecao">Coleção:</label>
+            <select id="colecao" name="colecao" required>
+                <option value="Duratex">Duratex</option>
+                <option value="Arauco">Arauco</option>
+                <option value="Guararapes">Guararapes</option>
+                <option value="Berneck">Berneck</option>
+            </select>
+
+            <label for="linha">Linha:</label>
+            <input type="text" id="linha" name="linha" required>
+
+            <label for="imagem">URL da Imagem:</label>
+            <input type="text" id="imagem" name="imagem" required>
+
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" required></textarea>
+
+            <button type="submit" id="submitButton">Adicionar Cor</button>
+        </form>
+    </div>
+
+    <!-- Tabela para exibir as cores -->
+    <table id="coresTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Coleção</th>
+                <th>Linha</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As linhas da tabela serão preenchidas dinamicamente -->
+        </tbody>
+    </table>
   </div>
-
-
 </main>
 </body>
 
@@ -146,6 +189,8 @@
             <a href="../pages/sobre-nos.html" target="_blank">Sobre nós</a>
         </p>
 </footer>
-<script src="../js/main.js"></script>
-<script src="./js/modulo.js" type="modulo"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}" ></script>
+<script src="{{ url_for('static', filename='js/manageColor.js') }}"></script>
+<script src="{{ url_for('static', filename='js/modulo.js') }}" type="modulo"></script>
+<script src="{{ url_for('static', filename='js/responsive.js') }}"></script>
 </html>
