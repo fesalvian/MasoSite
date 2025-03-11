@@ -51,7 +51,6 @@ Aqui estão algumas imagens do projeto em funcionamento:
 ### Página de Favoritos
 ![Favoritos](./screenshots/favorites.png)
 
-> **Nota**: Adicione as imagens na pasta `screenshots` e atualize os caminhos acima.
 
 ## 🚀 Como Rodar o Projeto
 
@@ -131,34 +130,6 @@ Contribuições são bem-vindas! Siga os passos abaixo:
 4. Push para a branch (`git push origin feature/nova-feature`).
 5. Abra um Pull Request.
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
 
 Feito com ❤️ por [Felipe Salvian](https://github.com/fesalvian).
-```
-
----
-
-### **Como Usar**
-
-1. Substitua os caminhos das imagens (`./screenshots/...`) pelos caminhos reais das screenshots do seu projeto.
-2. Adicione as imagens na pasta `screenshots` do repositório.
-3. Atualize as informações do projeto (como tecnologias, funcionalidades, etc.) conforme necessário.
-4. Se o projeto tiver uma licença, adicione o arquivo `LICENSE` e atualize a seção de licença no README.
-
----
-
-### **Exemplo de Estrutura de Screenshots**
-
-Crie uma pasta chamada `screenshots` no repositório e adicione as imagens do projeto. Por exemplo:
-
-```
-screenshots/
-├── home.png
-├── catalog.png
-├── admin.png
-└── favorites.png
 ```
