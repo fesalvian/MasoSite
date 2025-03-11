@@ -125,6 +125,19 @@ def cadastro():
 def manageCatalog():
     return render_template('pages/manage-catalog.html')
 
+@app.route('/termoDeServico')
+def termoDeServico():
+    return render_template('pages/termoDeServico.html')
+
+@app.route('/politicas')
+def politicas():
+    return render_template('pages/politicas.html')
+
+@app.route('/sobre-nos')
+def sobre_nos():
+    return render_template('pages/sobre-nos.html')
+
+
 # Iniciar o servidor
 if __name__ == '__main__':
     app.run(debug=True)

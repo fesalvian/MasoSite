@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Miss+Fajardose&family=Mrs+Saint+Delafield&family=Parisienne&display=swap');
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maso Web Page</title>
@@ -18,35 +15,68 @@
 </head>
 <body>
 <header>
-  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso" >
+  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
         <nav class="navButtons">
           <a href="{{ url_for('index') }}"><button class="btn" >Pagina incial</button></a>
           <a href="{{ url_for('catalogo') }}"><button class="btn" >Catalogos</button></a>
           <a href="{{ url_for('favoritos') }}"><button class="btn">Favoritos</button></a></nav>
           <a href="{{ url_for('login') }}" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
-
+        
           <input class="label-check" id="label-check" type="checkbox">
-    <label for="label-check" class="hamburger-label">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    <label></label></label>
+          <label for="label-check" class="hamburger-label">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          <label></label></label>
         </header>
 <main>
-  <h1 class="colTitle">Coleções</h1>
 
-  <div class="containerSection">
-    <div class="card" id="Duratex" data-filter="Duratex"></div>
-    <div class="card" id="Arauco" data-filter="Arauco"></div>
-    <div class="card" id="Guararapes" data-filter="Guararapes"></div>
-    <div class="card" id="Berneck" data-filter="Berneck"></div>
-  </div>
+  <h1>Política de Privacidade</h1>
+    <p>Esta Política de Privacidade descreve como coletamos, usamos e protegemos suas informações pessoais ao utilizar nosso site.</p>
+
+    <h2>1. Dados Coletados</h2>
+    <p>Podemos coletar as seguintes informações:</p>
+    <ul>
+        <li>Nome</li>
+        <li>Endereço de e-mail</li>
+        <li>Endereço IP</li>
+        <li>Dados de navegação (cookies)</li>
+    </ul>
+
+    <h2>2. Uso dos Dados</h2>
+    <p>Seus dados são usados para:</p>
+    <ul>
+        <li>Melhorar a experiência do usuário.</li>
+        <li>Enviar newsletters (se você optar por recebê-las).</li>
+        <li>Analisar o tráfego do site.</li>
+    </ul>
+
+    <h2>3. Compartilhamento de Dados</h2>
+    <p>Não compartilhamos seus dados pessoais com terceiros, exceto quando exigido por lei.</p>
+
+    <h2>4. Segurança dos Dados</h2>
+    <p>Adotamos medidas de segurança para proteger seus dados contra acesso não autorizado ou divulgação.</p>
+
+    <h2>5. Direitos do Usuário</h2>
+    <p>Você tem o direito de:</p>
+    <ul>
+        <li>Acessar seus dados.</li>
+        <li>Solicitar a correção de dados incorretos.</li>
+        <li>Solicitar a exclusão de seus dados.</li>
+    </ul>
+
+    <h2>6. Cookies</h2>
+    <p>Usamos cookies para melhorar a experiência do usuário. Você pode gerenciar cookies nas configurações do seu navegador.</p>
+
+    <h2>7. Alterações na Política</h2>
+    <p>Esta política pode ser atualizada. Alterações serão comunicadas aos usuários.</p>
+
+    <h2>8. Contato</h2>
+    <p>Para dúvidas sobre privacidade, entre em contato conosco em: <a href="mailto:contato@seusite.com">contato@seusite.com</a>.</p>
+
+    <p><strong>Data de vigência:</strong> 01/01/2024</p>
+
 </main>
-
-<h1 class="colTitle">Cores em Alta</h1>
-<div class="catalog">
-</div>
-
 </body>
 
 <footer>
@@ -146,15 +176,12 @@
     </li>
   </ul>
   
-  
   <p>
     <a href="{{ url_for('politicas') }}" target="_blank">Política de Privacidade</a> |
     <a href="{{ url_for('termoDeServico') }}" target="_blank">Termos de Serviço</a> |
     <a href="{{ url_for('sobre_nos') }}">Sobre nós</a>
   </p>
 </footer>
-
 <script src="{{ url_for('static', filename='js/main.js') }}" ></script>
-<script src="{{ url_for('static', filename='js/homeScreen.js') }}" type="module"></script>
-<script src="{{ url_for('static', filename='js/catalogScreen.js') }}" type="module"></script>
+<script src="{{ url_for('static', filename='js/favorites.js') }}" type="module"></script>
 </html>

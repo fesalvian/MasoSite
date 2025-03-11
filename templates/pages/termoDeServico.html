@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Herr+Von+Muellerhoff&family=Miss+Fajardose&family=Mrs+Saint+Delafield&family=Parisienne&display=swap');
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maso Web Page</title>
@@ -18,35 +15,60 @@
 </head>
 <body>
 <header>
-  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso" >
+  <img class="logoMaso" src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/logoMaso.png?raw=true" alt="logoMaso">
         <nav class="navButtons">
           <a href="{{ url_for('index') }}"><button class="btn" >Pagina incial</button></a>
           <a href="{{ url_for('catalogo') }}"><button class="btn" >Catalogos</button></a>
           <a href="{{ url_for('favoritos') }}"><button class="btn">Favoritos</button></a></nav>
           <a href="{{ url_for('login') }}" ><img src="https://github.com/fesalvian/MasoSite/blob/main/MasoWebPage%20FRONTEND/img/perfil-icone.png?raw=true" class="perfil-icone" alt="icone do perfil"></a>
-
+        
           <input class="label-check" id="label-check" type="checkbox">
-    <label for="label-check" class="hamburger-label">
-      <div class="line1"></div>
-      <div class="line2"></div>
-      <div class="line3"></div>
-    <label></label></label>
+          <label for="label-check" class="hamburger-label">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          <label></label></label>
         </header>
 <main>
-  <h1 class="colTitle">Coleções</h1>
 
-  <div class="containerSection">
-    <div class="card" id="Duratex" data-filter="Duratex"></div>
-    <div class="card" id="Arauco" data-filter="Arauco"></div>
-    <div class="card" id="Guararapes" data-filter="Guararapes"></div>
-    <div class="card" id="Berneck" data-filter="Berneck"></div>
-  </div>
-</main>
-
-<h1 class="colTitle">Cores em Alta</h1>
-<div class="catalog">
+  <div class="filters">
+    <select id="filterSelect">
+        <option value="all">Todos</option>
+        <option value="colecao1">Duratex</option>
+        <option value="colecao2">Arauco</option>
+        <option value="colecao3">Guararapes</option>
+        <option value="colecao4">Berneck</option>
+    </select>
+    <input type="text" id="searchInput" placeholder="Buscar por nome...">
 </div>
 
+<div>
+    <h1>Termos de Serviço</h1>
+    <p>Bem-vindo ao nosso site! Ao acessar e utilizar este site, você concorda com os seguintes termos e condições. Leia-os atentamente.</p>
+
+    <h2>1. Uso do Site</h2>
+    <p>Você concorda em usar este site apenas para fins legais e de acordo com estes Termos de Serviço. É proibido:</p>
+    <ul>
+        <li>Realizar atividades ilegais ou fraudulentas.</li>
+        <li>Enviar spam ou conteúdo malicioso.</li>
+        <li>Violar direitos de propriedade intelectual.</li>
+    </ul>
+
+    <h2>2. Propriedade Intelectual</h2>
+    <p>Todo o conteúdo deste site, incluindo textos, imagens, logos e designs, é de nossa propriedade ou de terceiros licenciados. A reprodução não autorizada é proibida.</p>
+
+    <h2>3. Limitação de Responsabilidade</h2>
+    <p>Não nos responsabilizamos por danos diretos, indiretos ou consequenciais resultantes do uso deste site. Este site pode conter links para sites de terceiros, mas não temos controle sobre o conteúdo desses sites.</p>
+
+    <h2>4. Alterações nos Termos</h2>
+    <p>Reservamos o direito de modificar estes Termos de Serviço a qualquer momento. Alterações serão comunicadas aos usuários.</p>
+
+    <h2>5. Lei Aplicável</h2>
+    <p>Estes Termos de Serviço são regidos pelas leis do Brasil.</p>
+
+    <p><strong>Data de vigência:</strong> 01/01/2024</p>
+</div>
+</main>
 </body>
 
 <footer>
@@ -147,14 +169,12 @@
   </ul>
   
   
-  <p>
-    <a href="{{ url_for('politicas') }}" target="_blank">Política de Privacidade</a> |
-    <a href="{{ url_for('termoDeServico') }}" target="_blank">Termos de Serviço</a> |
-    <a href="{{ url_for('sobre_nos') }}">Sobre nós</a>
-  </p>
+          <p>
+            <a href="{{ url_for('politicas') }}" target="_blank">Política de Privacidade</a> |
+            <a href="{{ url_for('termoDeServico') }}" target="_blank">Termos de Serviço</a> |
+            <a href="{{ url_for('sobre_nos') }}">Sobre nós</a>
+          </p>
 </footer>
-
 <script src="{{ url_for('static', filename='js/main.js') }}" ></script>
-<script src="{{ url_for('static', filename='js/homeScreen.js') }}" type="module"></script>
-<script src="{{ url_for('static', filename='js/catalogScreen.js') }}" type="module"></script>
+<script src="{{ url_for('static', filename='js/favorites.js') }}" type="module"></script>
 </html>
