@@ -132,4 +132,3 @@ Contribuições são bem-vindas! Siga os passos abaixo:
 
 
 Feito com ❤️ por [Felipe Salvian](https://github.com/fesalvian).
-```
