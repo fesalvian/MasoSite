@@ -42,14 +42,18 @@ Aqui estão algumas imagens do projeto em funcionamento:
 ### Página Inicial
 ![Página Inicial](./screenshots/home.png)
 
+![Página Inicial 02](./screenshots/home2.png)
+
 ### Catálogo de Cores
-![Catálogo de Cores](./screenshots/catalog.png)
+![Catálogo de Cores](./screenshots/catalogo.png)
 
 ### Área Administrativa (CRUD)
-![Área Administrativa](./screenshots/admin.png)
+![Área Administrativa](./screenshots/create.png)
+
+![Área Administrativa 02](./screenshots/updateDelete.png)
 
 ### Página de Favoritos
-![Favoritos](./screenshots/favorites.png)
+![Favoritos](./screenshots/favoritos.png)
 
 
 ## 🚀 Como Rodar o Projeto
@@ -95,7 +99,7 @@ Siga os passos abaixo para configurar e rodar o projeto localmente.
 
 5. **Execute o backend**:
    ```bash
-   python app.py
+   python3 app.py
    ```
 
 6. **Acesse o site**:
