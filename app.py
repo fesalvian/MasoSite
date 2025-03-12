@@ -1,15 +1,21 @@
 from flask import Flask, jsonify, request, render_template
 import mysql.connector
+from dotenv import load_dotenv
+import os
+
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
 
 app = Flask(__name__)
 
-# Configurações do banco de dados
+# Configuração do banco de dados usando variáveis de ambiente
 db_config = {
-    'host': 'localhost',
-    'user': 'root',  # Substitua pelo seu usuário do MySQL
-    'password': 'felipeuser1234',  # Substitua pela sua senha do MySQL
-    'database': 'MasoCatalogDB'
+    'host' : os.getenv('DB_HOST'),
+    'user' : os.getenv('DB_USER'),
+    'password' : os.getenv('DB_PASSWORD'),
+    'database' : os.getenv('DB_NAME')
 }
+
 
 # Função para conectar ao banco de dados
 def get_db_connection():
