@@ -1,4 +1,33 @@
+// Função global para marcar/desmarcar uma cor como "em alta"
+async function toggleEmAlta(id, emAltaAtual) {
+    const API_URL = 'http://127.0.0.1:5000/cores'; // URL da API
+
+    try {
+        const response = await fetch(`${API_URL}/${id}/em-alta`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ em_alta: !emAltaAtual }),
+        });
+
+        const data = await response.json(); // Converte a resposta para JSON
+
+        if (response.ok) {
+            alert(data.mensagem || 'Status "em alta" atualizado com sucesso!');
+            carregarCores(); // Recarrega a tabela apenas se a requisição for bem-sucedida
+        } else {
+            alert(data.mensagem || 'Erro ao atualizar status "em alta". Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao atualizar status "em alta". Tente novamente.');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
 const API_URL = 'http://127.0.0.1:5000/cores'; // URL da API
+const coresTable = document.getElementById('coresTable'); // Tabela de cores
 console.log('Carregado API com sucesso')
 
         // Função para carregar as cores na tabela
@@ -19,6 +48,9 @@ console.log('Carregado API com sucesso')
                             <td class="actions">
                                 <button class="edit" onclick="editarCor(${cor.id})">Editar</button>
                                 <button class="delete" onclick="excluirCor(${cor.id})">Excluir</button>
+
+                                <button class="em-alta" onclick="toggleEmAlta(${cor.id}, ${cor.em_alta})">
+                                ${cor.em_alta ? '⭐ Remover' : '⭐ Marcar'}
                             </td>
                         </tr>
                     `;
@@ -113,5 +145,7 @@ console.log('Carregado API com sucesso')
         // Event listener para o formulário
         document.getElementById('formCor').addEventListener('submit', salvarCor);
 
+
         // Carrega as cores ao carregar a página
         carregarCores();
+    });

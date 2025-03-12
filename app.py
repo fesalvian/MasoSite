@@ -137,6 +137,34 @@ def politicas():
 def sobre_nos():
     return render_template('pages/sobre-nos.html')
 
+    #Rota pra buscar as cores em alta
+@app.route('/cores/em-alta', methods=['GET'])
+def listar_cores_em_alta():
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute('SELECT * FROM Cores WHERE em_alta = TRUE LIMIT 3')
+    cores = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return jsonify(cores)
+
+#Rota para atualizar cores em alta
+
+@app.route('/cores/<int:id>/em-alta', methods=['PUT'])
+def atualizar_em_alta(id):
+    dados = request.json
+    em_alta = dados.get('em_alta', False)
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    query = 'UPDATE Cores SET em_alta = %s WHERE id = %s'
+    cursor.execute(query, (em_alta, id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return jsonify({'mensagem': 'Status "em alta" atualizado com sucesso!'})
+
 
 # Iniciar o servidor
 if __name__ == '__main__':
